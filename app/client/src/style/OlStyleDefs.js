@@ -620,6 +620,11 @@ export const layersStylePropFn = {
       return getRadiusValue(propertyValue, 0.3, 4, 50);
     }
   },
+  midway_states: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
   miss_tri: {
     fillColor: propertyValue => {
       return propertyValue;

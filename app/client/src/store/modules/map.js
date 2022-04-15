@@ -67,15 +67,15 @@ const state = {
     format: 'GeoJSON',
     visible: true,
     zIndex: 50,
-    minResolution: 0.5,
-    maxResolution: 64000,
+    minResolution: 0.25,
+    maxResolution: 1899,
     label: null,
     hoverable: true,
     canEdit: false,
     style: {
       styleRef: 'htmlLayerStyle',
       hoverTextColor: 'white',
-      hoverBackgroundColor: '#000000'
+      hoverBackgroundColor: 'rgba(0,0,0,0.0)'
     }
   },
   postEditLayer: null, // user for
