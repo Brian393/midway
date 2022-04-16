@@ -142,11 +142,11 @@
             },
             {
                 "type": "XYZ",
-                "name": "osm_midway",
+                "name": "osm_midway_complete",
                 "group": "backgroundLayers",
-                "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm:osm_midway@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+                "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm:osm_midway_complete@EPSG%3A900913@png/{z}/{x}/{-y}.png",
                 "minResolution": 0.25,
-                "maxResolution": 1900,
+                "maxResolution": 60000,
                 "displayInLegend": false,
                 "legendDisplayName": "",
                 "opacity": 0.99,
@@ -158,9 +158,7 @@
             "midway_fair": {
                 "default": {
                     "layers": [
-                        "osm_midway-background",
-                        "midway_states",
-                        "osm_midway",
+                        "osm_midway_complete",
                         "ESRI-World-Imagery",
                         "spiral"
                     ],
