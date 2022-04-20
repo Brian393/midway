@@ -9,6 +9,11 @@
         "legend": {
             "isVisible": false
         },
+        "controls": {
+            "locate_me": true,
+            "share_map": true,
+            "geocoder": true
+        },
         "sideBar": {
             "isVisible": true,
             "backgroundColor": "#fefefe",
