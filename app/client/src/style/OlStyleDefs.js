@@ -464,7 +464,7 @@ export function htmlLayerStyle() {
       return new OlStyle({
         image: new OlIconStyle({
           src: feature.get('icon'),
-          scale: 1,
+          scale: 0.7,
           opacity: 1
         })
       });

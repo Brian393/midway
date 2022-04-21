@@ -90,7 +90,7 @@ export default {
           ]);
           if (!source.isEmpty()) {
             map.getView().fit(source.getExtent(), {
-              maxZoom: 6.1,
+              maxZoom: 14,
               duration: 500
             });
             navigator.geolocation.clearWatch(watchId);
@@ -128,6 +128,6 @@ export default {
 </script>
 <style lang="css" scoped>
 .locate-button {
-  z-index: 10000;
+  z-index: 100;
 }
 </style>
