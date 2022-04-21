@@ -87,7 +87,7 @@
                 "legendDisplayName": "Midway Venues",
                 "format": "GeoJSON",
                 "visible": true,
-                "zIndex": 1000,
+                "zIndex": 10000,
                 "minResolution": 0,
                 "maxResolution": 8000,
                 "label": null,
@@ -142,7 +142,7 @@
                 "group": "backgroundLayers",
                 "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
                 "minResolution": 0.25,
-                "maxResolution": 1,
+                "maxResolution": 2,
                 "queryable": false,
                 "visible": true
             },
@@ -193,11 +193,11 @@
                         "midway_venues"
                     ],
                     "center": [
-                        -89.49,
-                        43.11
+                        -91.289,
+                        42.690
                     ],
                     "resolution": 2200,
-                    "mobileResolution": 14000,
+                    "mobileResolution": 7000,
                     "mobileCenter": [
                         -89.41,
                         42.097
