@@ -397,13 +397,13 @@ export default {
         // Values for larger screens
         _default = 600;
         _corporateNetworkSelected = 600;
-      } else if (winWidth < 900) {
+      } else if (winWidth < 1500) {
         // Values for small screens (mini - tables or low resolutions)
         _default = 350;
         _corporateNetworkSelected = 350;
       } else {
         // Values for normal screens (default)
-        _default = 460;
+        _default = 440;
         _corporateNetworkSelected = 600;
       }
       this.sidebarWidth = {

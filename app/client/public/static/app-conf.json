@@ -11,8 +11,8 @@
         },
         "controls": {
             "locate_me": true,
-            "share_map": true,
-            "geocoder": true
+            "share_map": false,
+            "geocoder": false
         },
         "sideBar": {
             "isVisible": true,
@@ -68,13 +68,37 @@
                 "visible": true,
                 "zIndex": 1000,
                 "minResolution": 1900,
-                "maxResolution": 20000,
+                "maxResolution": 14000,
                 "label": null,
                 "hoverable": false,
                 "isInteractive": false,
                 "style": {
                     "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/spiral_arrow.png",
-                    "scale": 1
+                    "scale": 1.1
+                }
+            },
+            {
+                "type": "VECTOR",
+                "name": "midway_venues",
+                "url": "/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:midway_venues&outputFormat=application/json&srsname=EPSG:3857",
+                "group": "midway_fair",
+                "queryable": true,
+                "displayInLegend": true,
+                "legendDisplayName": "Midway Venues",
+                "format": "GeoJSON",
+                "visible": true,
+                "zIndex": 1000,
+                "minResolution": 0,
+                "maxResolution": 8000,
+                "label": null,
+                "hoverable": true,
+                "isInteractive": true,
+                "style": {
+                  "stylePropFnRef": {
+                    "iconUrl": "variable1"
+                  },
+                  "hoverTextColor": "white",
+                  "hoverBackgroundColor": "#000000"
                 }
             },
             {
@@ -165,17 +189,18 @@
                     "layers": [
                         "osm_midway_complete",
                         "ESRI-World-Imagery",
-                        "spiral"
+                        "spiral",
+                        "midway_venues"
                     ],
                     "center": [
-                        -93.85,
-                        42.7
+                        -89.49,
+                        43.11
                     ],
-                    "resolution": 3000,
-                    "mobileResolution": 9500,
+                    "resolution": 2200,
+                    "mobileResolution": 14000,
                     "mobileCenter": [
-                        -90.5,
-                        42.7
+                        -89.41,
+                        42.097
                     ],
                     "minResolution": 0,
                     "maxResolution": 64000
@@ -223,7 +248,8 @@
         "popupFieldsMapping": {
             "default": {
                 "title": "NAME",
-                "entity": "OWNER"
+                "entity": "OWNER",
+                "text": "WHAT'S HAPPENING"
             }
         },
         "featureInfoHiddenProps": [
