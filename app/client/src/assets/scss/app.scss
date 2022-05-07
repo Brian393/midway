@@ -19,6 +19,12 @@ body,
   margin-block-end: 0.67em;
 }
 
+:-webkit-any(article, aside, nav, section) p {
+  font-size: 1em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+}
+
 .wg-app {
   position: relative;
   width: 100%;
@@ -72,7 +78,6 @@ body,
 .clickable {
   cursor: pointer;
 }
-
 /*Popup overlay Styling */
 .ol-popup {
   position: absolute;
