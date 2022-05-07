@@ -4,7 +4,7 @@
       v-if="currentResolution && currentResolution <= minResolution"
       rounded
       large
-      :color="color"
+      :color="secondary.color"
       dark
       @click="addPost"
     >

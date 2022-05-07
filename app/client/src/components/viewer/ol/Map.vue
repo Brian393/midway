@@ -1,16 +1,16 @@
 <template>
   <div id="ol-map-container">
     <!-- Map Controls -->
-    <map-legend :color="color.primary" />
+    <map-legend :color="color.secondary" />
     <div style="position:absolute;left:20px;top:10px;">
-      <login-button :color="color.primary"></login-button>
-      <zoom-control :color="color.primary" :map="map" />
-      <full-screen :color="color.primary" />
-      <share-map :color="color.primary" :map="map"></share-map>
+      <login-button :color="color.secondary"></login-button>
+      <zoom-control :color="color.secondary" :map="map" />
+      <full-screen :color="color.secondary" />
+      <share-map :color="color.secondary" :map="map"></share-map>
       <!-- Show only on mobile -->
       <locate
         v-if="$vuetify.breakpoint.smAndDown"
-        :color="color.primary"
+        :color="color.secondary"
         :map="map"
       />
       <route-controls

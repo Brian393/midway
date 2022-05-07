@@ -15,7 +15,7 @@
                 class="edit-buttons"
                 v-on="on"
                 @click="activateEdit"
-                :color="color.primary"
+                color="#CF00E8"
                 fab
                 dark
                 small
@@ -42,7 +42,7 @@
               class="edit-buttons"
               dark
               rounded
-              :color="color.primary"
+              color="#CF00E8"
               ><v-icon small left>far fa-edit</v-icon>
               {{
                 selectedLayer ? selectedLayer.get('legendDisplayName') : ''
@@ -78,7 +78,7 @@
             class="edit-buttons mt-2"
             v-on="on"
             @click="togglePostEdit"
-            :color="isEditingPost ? 'error' : color.primary"
+            :color="isEditingPost ? 'error' : '#CF00E8'"
             fab
             dark
             small
@@ -104,7 +104,7 @@
                 dark
                 right
                 x-small
-                :color="isEditingPost ? color.activeButton : color.primary"
+                :color="isEditingPost ? color.activeButton : '#CF00E8'"
                 @click="edit(item.action)"
               >
                 <v-icon medium>{{ item.icon }}</v-icon>
@@ -358,7 +358,7 @@
       inset
     >
       <v-card>
-        <v-app-bar :color="color.primary" dark dense flat>
+        <v-app-bar :color="color.secondary" dark dense flat>
           <v-app-bar-nav-icon><v-icon>delete</v-icon></v-app-bar-nav-icon>
           <v-toolbar-title class="white--text">Confirm?</v-toolbar-title>
         </v-app-bar>

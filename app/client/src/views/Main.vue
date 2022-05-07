@@ -31,18 +31,11 @@
 
       <!-- APP BAR DESKTOP -->
       <v-app-bar app clipped-right height="60" :color="color.primary" dark>
-        <v-toolbar-title
-          @click="$appConfig.app.projectWebsite ? openWebsite() : resetMap()"
-          flat
-          :style="`background-color:${color.primary};text-color:white;`"
-          class="logo headline font-weight-bold gray--text ml-3 dark mx-2"
-          >{{ $appConfig.app.title }}</v-toolbar-title
+        <v-img class="pl-2 pr-4" src="https://ecotopia.today/midway/MDWdrift_logo.png" max-height="50px" max-width="230px" contain>
+        </v-img>
+        <v-btn color="#CF00E8" large outlined raised rounded @click="goToHome()">return home</v-btn
         >
-        <v-btn small depressed fab color="gray" class="ml-0" @click="goToHome()"
-          ><v-icon small>fas fa-home</v-icon></v-btn
-        >
-
-        <v-spacer></v-spacer>
+       
         <v-menu
           offset-y
           v-model="dropdownMenu"
@@ -58,7 +51,7 @@
               :class="{
                 active: dropdownMenu,
                 'mx-2': true
-              }"
+              }" 
             >
               {{
                 `${$appConfig.map.groupTitles[activeLayerGroup.navbarGroup]}`
@@ -95,7 +88,7 @@
           "
         >
           <div v-for="(navbarGroup, index) in navbarGroups" :key="index">
-            <v-btn
+            <v-btn large outlined raised rounded
               min-width="200"
               class="mx-10"
               :dark="
@@ -110,9 +103,9 @@
               :class="{
                 'elevation-0':
                   activeLayerGroup.navbarGroup !== navbarGroup.name,
-                'font-weight-bold black--text':
+                'font-weight-bold purple--text':
                   activeLayerGroup.navbarGroup === navbarGroup.name,
-                'elevation-6': activeLayerGroup.navbarGroup === navbarGroup.name
+                'elevation-0': activeLayerGroup.navbarGroup === navbarGroup.name
               }"
             >
               {{ navbarGroup.title }}
@@ -122,9 +115,9 @@
 
         <v-spacer></v-spacer><v-spacer></v-spacer>
 
-        <span class="title pr-5">distributed art fair</span>
+        <span class="title pr-5 purple--text">May-October 2022</span>
         <v-btn icon @click.stop="sidebarState = !sidebarState"
-          ><v-icon medium>{{
+          ><v-icon medium color="purple">{{
             sidebarState ? '$close' : '$menu'
           }}</v-icon></v-btn
         >
