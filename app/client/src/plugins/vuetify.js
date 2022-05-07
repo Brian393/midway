@@ -12,6 +12,7 @@ const vuetify = new Vuetify({
   theme: {
     themes: {
       light: {
+        anchor: '#D4B842',
         black: "#000000",
         purple: "#CF00E8"
       },
