@@ -32,12 +32,13 @@
       <!-- APP BAR DESKTOP -->
       <v-app-bar app clipped-right height="60" :color="color.primary" dark>
         <a href="https://www.mdwfair.com/" target="_blank">
-        <v-img class="pl-2 pr-4" src="https://ecotopia.today/midway/MDWdrift_logo.png" max-height="50px" max-width="230px" contain>
+        <v-img class="pl-2 pr-4" src="https://ecotopia.today/midway/MDWfair_logo.png" max-height="50px" max-width="230px" contain>
         </v-img>
         </a>
-        <v-btn color="#CF00E8" large outlined raised rounded @click="goToHome()">return home</v-btn
-        >
-       
+        <v-btn small depressed fab color="#CF00E8" class="ml-0" @click="goToHome()"
+          ><v-icon small>fas fa-home</v-icon></v-btn
+          >
+       <v-spacer></v-spacer>
         <v-menu
           offset-y
           v-model="dropdownMenu"
