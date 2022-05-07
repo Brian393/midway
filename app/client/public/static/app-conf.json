@@ -98,6 +98,7 @@
                   "stylePropFnRef": {
                     "iconUrl": "variable1"
                   },
+                  "scale": 1.1,
                   "hoverTextColor": "white",
                   "hoverBackgroundColor": "#000000"
                 }
