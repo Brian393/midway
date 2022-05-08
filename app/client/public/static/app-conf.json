@@ -1,10 +1,10 @@
 {
     "app": {
-        "title": "Co-Pro Chicago",
+        "title": "",
         "projectWebsite": "https://coprosperity.org/",
         "color": {
-            "primary": "#00000e",
-            "secondary": "#00000e"
+            "primary": "#CF00E8",
+            "secondary": "#ffffff"
         },
         "legend": {
             "isVisible": false
@@ -73,8 +73,9 @@
                 "hoverable": false,
                 "isInteractive": false,
                 "style": {
-                    "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/spiral_arrow.png",
-                    "scale": 1.1
+                    "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/spiral_arrow2.png",
+                    "scale": 0.8,
+                    "opacity": 0.8
                 }
             },
             {
@@ -97,6 +98,7 @@
                   "stylePropFnRef": {
                     "iconUrl": "variable1"
                   },
+                  "scale": 1.1,
                   "hoverTextColor": "white",
                   "hoverBackgroundColor": "#000000"
                 }
@@ -249,7 +251,8 @@
             "default": {
                 "title": "NAME",
                 "entity": "OWNER",
-                "text": "WHAT'S HAPPENING"
+                "text": "WHAT'S HAPPENING",
+                "link1": "WEBSITE"
             }
         },
         "featureInfoHiddenProps": [

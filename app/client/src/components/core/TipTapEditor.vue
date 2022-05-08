@@ -245,6 +245,13 @@ export default {
   margin-top: 16px !important;
   margin-bottom: 16px !important;
   min-height: 1rem;
+
+}
+h1 h2 h3 {
+  color: #D1B457;
+}
+strong {
+  color: #D1B457;
 }
 
 .ProseMirror {
