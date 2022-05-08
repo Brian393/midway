@@ -45,7 +45,7 @@
             <v-btn
               small
               rounded
-              :color="$appConfig.app.color.secondary"
+              :color="$appConfig.app.color.primary"
               class="elevation-0"
               v-on="on"
               v-bind="attrs"

@@ -66,7 +66,7 @@ const state = {
     legendDisplayName: 'Posts',
     format: 'GeoJSON',
     visible: true,
-    zIndex: 0,
+    zIndex: 100,
     minResolution: 0.25,
     maxResolution: 1600,
     label: null,
@@ -75,7 +75,7 @@ const state = {
     style: {
       styleRef: 'htmlLayerStyle',
       hoverTextColor: 'white',
-      hoverBackgroundColor: 'rgba(0,0,0,0.0)'
+      hoverBackgroundColor: 'rgba(0,0,0,0.5)'
     }
   },
   postEditLayer: null, // user for
