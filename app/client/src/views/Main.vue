@@ -122,7 +122,7 @@
 
        <span class="title pr-5 purple--text">May-October 2022</span>
         <v-btn icon @click.stop="sidebarState = !sidebarState"
-          ><v-icon medium>{{
+          ><v-icon medium color="purple">{{
             sidebarState ? '$close' : '$menu'
           }}</v-icon></v-btn
         >
