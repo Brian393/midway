@@ -90,7 +90,7 @@ export default {
           ]);
           if (!source.isEmpty()) {
             map.getView().fit(source.getExtent(), {
-              maxZoom: 6.1,
+              maxZoom: 15,
               duration: 500,
               minResolution: resolution ? resolution : 0
             });
