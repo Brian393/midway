@@ -43,7 +43,7 @@
       v-if="$vuetify.breakpoint.smAndDown"
       :style="
         `position:absolute;bottom:${
-          $vuetify.breakpoint.smAndDown && !mobilePanelState ? 70 : 20
+          $vuetify.breakpoint.smAndDown && !mobilePanelState ? 70 : 50
         }px;left:50%;z-index:100;transform:translateX(-50%);`
       "
     >
@@ -52,7 +52,7 @@
     <div
       :style="
         `position:absolute;bottom:${
-          $vuetify.breakpoint.smAndDown && !mobilePanelState ? 70 : 20
+          $vuetify.breakpoint.smAndDown && !mobilePanelState ? 70 : 50
         }px;left:50%;z-index:101;transform:translateX(-50%);`
       "
     >
