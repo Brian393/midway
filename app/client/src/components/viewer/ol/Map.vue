@@ -4,12 +4,21 @@
     <map-legend :color="color.primary" />
     <div style="position:absolute;left:20px;top:10px;">
       <login-button :color="color.primary"></login-button>
+      <search-map
+        v-if="$appConfig.app.controls && $appConfig.app.controls.geocoder"
+        :color="color.primary"
+        :map="map"
+      ></search-map>
       <zoom-control :color="color.primary" :map="map" />
       <full-screen :color="color.primary" />
-      <share-map :color="color.primary" :map="map"></share-map>
+      <share-map
+        v-if="$appConfig.app.controls && $appConfig.app.controls.share_map"
+        :color="color.primary"
+        :map="map"
+      ></share-map>
       <!-- Show only on mobile -->
       <locate
-        v-if="$vuetify.breakpoint.smAndDown"
+        v-if="$appConfig.app.controls && $appConfig.app.controls.locate_me"
         :color="color.primary"
         :map="map"
       />
@@ -201,6 +210,7 @@ import OverlayPopup from './controls/Overlay';
 import ZoomControl from './controls/ZoomControl';
 import FullScreen from './controls/FullScreen';
 import Locate from './controls/Locate';
+import Search from './controls/Search';
 import RouteControls from './controls/RouteControls';
 import Legend from './controls/Legend';
 import Login from './controls/Login';
@@ -244,6 +254,7 @@ export default {
     'route-controls': RouteControls,
     'app-lightbox': AppLightBox,
     'share-map': ShareMap,
+    'search-map': Search,
     locate: Locate,
     'progress-loader': ProgressLoader,
     edit: Edit,
@@ -1414,6 +1425,12 @@ export default {
       const hiddenProps = this.$appConfig.map.featureInfoHiddenProps;
       return hiddenProps || [];
     },
+    activeLayerGroupConf() {
+      const group = this.$appConfig.map.groups[
+        this.activeLayerGroup.navbarGroup
+      ][this.activeLayerGroup.region];
+      return group;
+    },
     searchLabel() {
       const searchLabel = this.popup.activeLayer.get('searchLabel');
       if (searchLabel) {
@@ -1441,7 +1458,10 @@ export default {
 
       let clearMap = true;
 
-      if (this.$appConfig.app.customNavigationScheme && this.$appConfig.app.customNavigationScheme === '2') {
+      if (
+        this.$appConfig.app.customNavigationScheme &&
+        this.$appConfig.app.customNavigationScheme === '2'
+      ) {
         if (newValue.region === oldValue.region) {
           clearMap = false;
         }
@@ -1461,6 +1481,9 @@ export default {
         this.queryLayersGeoserverNames = null;
         this.createLayers();
         this.fetchColorMapEntities();
+        if (this.$appConfig.app.customNavigationScheme === '3') {
+          this.resetMap();
+        }
       } else {
         this.resetMap();
       }

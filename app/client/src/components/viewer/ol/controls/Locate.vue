@@ -54,7 +54,7 @@ export default {
      * scope, whose "this" scope is the event and the clicked button.
      *
      */
-    handleZoomToMe: function() {
+    handleZoomToMe: function(resolution) {
       if (!this.userLocSource) {
         this.createUserLocationLayer();
       }
@@ -73,10 +73,10 @@ export default {
           });
       }
       if (this.$cookies.get('locationRequested')) {
-        this.handleGetUserLocation(this.userLocSource, this.map);
+        this.handleGetUserLocation(this.userLocSource, this.map, resolution);
       }
     },
-    handleGetUserLocation: function(source, map) {
+    handleGetUserLocation: function(source, map, resolution) {
       const watchId = navigator.geolocation.watchPosition(
         function(pos) {
           const coords = [pos.coords.longitude, pos.coords.latitude];
@@ -90,8 +90,9 @@ export default {
           ]);
           if (!source.isEmpty()) {
             map.getView().fit(source.getExtent(), {
-              maxZoom: 14,
-              duration: 500
+              maxZoom: 6.1,
+              duration: 500,
+              minResolution: resolution ? resolution : 0
             });
             navigator.geolocation.clearWatch(watchId);
           }
@@ -128,6 +129,6 @@ export default {
 </script>
 <style lang="css" scoped>
 .locate-button {
-  z-index: 100;
+  z-index: 1;
 }
 </style>
