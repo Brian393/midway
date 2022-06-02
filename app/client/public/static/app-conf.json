@@ -11,7 +11,7 @@
       },
       "controls": {
           "locate_me": true,
-          "share_map": true,
+          "share_map": false,
           "geocoder": true
       },
       "sideBar": {
@@ -56,13 +56,28 @@
           0
       ],
       "layers": [
+        {
+            "type": "XYZ",
+            "name": "osm_midway_complete",
+            "group": "midway_fair",
+            "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm:osm_midway_complete@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+            "minResolution": 0.25,
+            "maxResolution": 60000,
+            "displayInLegend": true,
+            "legendDisplayName": "Midway States",
+            "displaySidebarInfo": false,
+            "visible": true,
+            "opacity": 0.99,
+            "visible": true,
+            "updatewhileanimating": true
+        },
           {
               "type": "VECTOR",
               "name": "spiral",
               "url": "/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:spiral&outputFormat=application/json&srsname=EPSG:3857",
               "group": "urban_ecology",
               "queryable": false,
-              "displayInLegend": false,
+              "displayInLegend": true,
               "legendDisplayName": "Spiral",
               "format": "GeoJSON",
               "visible": true,
@@ -104,31 +119,6 @@
               }
           },
           {
-              "type": "VECTOR",
-              "name": "midway_states",
-              "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:midway_states&outputFormat=application/json&srsname=EPSG:3857",
-              "group": "midway_fair",
-              "queryable": true,
-              "displayInLegend": false,
-              "legendDisplayName": "Midway states",
-              "displaySidebarInfo": false,
-              "format": "GeoJSON",
-              "visible": true,
-              "zIndex": 1,
-              "minResolution": 0.25,
-              "maxResolution": 60000,
-              "label": false,
-              "hoverable": false,
-              "isInteractive": false,
-              "style": {
-                  "stylePropFnRef": {
-                      "fillColor": "variable1"
-                  },
-                  "strokeColor": "rgba( 0, 0, 0, 0.6 )",
-                  "strokeWidth": 2
-              }
-          },
-          {
               "type": "XYZ",
               "name": "ESRI-World-Reference",
               "group": "backgroundLayers",
@@ -150,6 +140,32 @@
           },
           {
               "type": "XYZ",
+              "name": "ESRI-World-Imagery2",
+              "group": "midway_fair",
+              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+              "minResolution": 0.25,
+              "maxResolution": 64000,
+              "displayInLegend": true,
+              "legendDisplayName": "Satellite Map",
+              "displaySidebarInfo": false,
+              "visible": false,
+              "queryable": false
+          },
+          {
+              "type": "XYZ",
+              "name": "ESRI-World-Topo",
+              "group": "midway_fair",
+              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+              "minResolution": 0.25,
+              "maxResolution": 64000,
+              "displayInLegend": true,
+              "legendDisplayName": "Topo Map",
+              "displaySidebarInfo": false,
+              "visible": false,
+              "queryable": false
+          },
+          {
+              "type": "XYZ",
               "name": "shaded_relief",
               "group": "backgroundLayers",
               "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",
@@ -157,32 +173,6 @@
               "maxResolution": 60000,
               "queryable": false,
               "visible": true
-          },
-          {
-              "type": "XYZ",
-              "name": "osm_midway-background",
-              "group": "backgroundLayers",
-              "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm:osm_midway-background@EPSG%3A900913@png/{z}/{x}/{-y}.png",
-              "minResolution": 0.25,
-              "maxResolution": 60000,
-              "displayInLegend": false,
-              "legendDisplayName": "",
-              "opacity": 0.99,
-              "visible": true,
-              "updatewhileanimating": true
-          },
-          {
-              "type": "XYZ",
-              "name": "osm_midway_complete",
-              "group": "backgroundLayers",
-              "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm:osm_midway_complete@EPSG%3A900913@png/{z}/{x}/{-y}.png",
-              "minResolution": 0.25,
-              "maxResolution": 60000,
-              "displayInLegend": false,
-              "legendDisplayName": "",
-              "opacity": 0.99,
-              "visible": true,
-              "updatewhileanimating": true
           }
       ],
       "groups": {
@@ -191,6 +181,8 @@
                   "layers": [
                       "osm_midway_complete",
                       "ESRI-World-Imagery",
+                      "ESRI-World-Imagery2",
+                      "ESRI-World-Topo",
                       "spiral",
                       "midway_venues"
                   ],
