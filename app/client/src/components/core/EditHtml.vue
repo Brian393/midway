@@ -236,8 +236,17 @@ export default {
         })
         .then(() => {
           this.cancel();
+          // Clear the popup's highlight clone (via closePopupInfo) BEFORE refreshing
+          // the layer's source. The highlight clone sits at the feature's pre-drag
+          // position; if it's still on the map when the refreshed (post-drag) feature
+          // reappears, both are visible at once as two markers until the clone is
+          // cleared. Emitting this synchronously, ahead of refresh(), closes that gap.
+          EventBus.$emit('closePopupInfo');
+          const htmlPostLayer = this.layers.html_posts;
+          if (htmlPostLayer) {
+            htmlPostLayer.getSource().refresh();
+          }
           setTimeout(() => {
-            EventBus.$emit('closePopupInfo');
             this.toggleSnackbar({
               type: 'success',
               message: this.$t(this.postSnackbarMessages[type]),
@@ -245,10 +254,6 @@ export default {
               state: true,
             });
           }, 50);
-          const htmlPostLayer = this.layers.html_posts;
-          if (htmlPostLayer) {
-            htmlPostLayer.getSource().refresh();
-          }
         });
     },
     transactHtml(type) {

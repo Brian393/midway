@@ -144,6 +144,7 @@
       "fileUpload": "File uploaded. Click apply to insert it!",
       "clickToUpload": "Click to upload",
       "addPostSnackbar": "Zoom in close to add your post.",
+      "dragMarkerHint": "Drag marker to change position",
       "addPostWarning": "You have unsaved changes! Are you sure you want to continue?",
       "hardBreak": "Hard Break",
       "imageDragDropWarning": "Images must be uploaded using the image button in the toolbar."

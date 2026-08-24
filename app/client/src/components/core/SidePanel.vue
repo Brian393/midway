@@ -216,7 +216,6 @@
             <!-- EDIT POST BUTTONS -->
             <div v-if="isHtmlViewer" style="width: 100%">
               <v-row>
-                <v-spacer></v-spacer>
                 <div v-if="canEditPost">
                   <v-tooltip left>
                     <template v-slot:activator="{on}">
@@ -225,6 +224,45 @@
                       </v-btn> </template
                     ><span>{{ $t('form.htmlPostEditor.deletePost') }}</span>
                   </v-tooltip>
+                </div>
+                <v-tooltip left>
+                  <template v-slot:activator="{on}">
+                    <v-btn
+                      v-on="on"
+                      @click="dive"
+                      icon
+                      class="mr-3"
+                      v-if="
+                        popup.activeFeature &&
+                        ['Point', 'MultiPoint'].includes(popup.activeFeature.getGeometry().getType()) &&
+                        !previousMapPosition
+                      "
+                    >
+                      <v-icon>fas fa-search-plus</v-icon>
+                    </v-btn> </template
+                  ><span>{{ $t('general.zoom') }}</span>
+                </v-tooltip>
+                <v-tooltip left>
+                  <template v-slot:activator="{on}">
+                    <v-btn
+                      v-on="on"
+                      @click="back"
+                      icon
+                      class="mr-3"
+                      v-if="
+                        popup.activeFeature &&
+                        ['Point', 'MultiPoint'].includes(popup.activeFeature.getGeometry().getType()) &&
+                        previousMapPosition &&
+                        previousMapPosition.zoom &&
+                        previousMapPosition.center
+                      "
+                    >
+                      <v-icon>fas fa-arrow-left</v-icon>
+                    </v-btn> </template
+                  ><span>{{ $t('general.back') }}</span>
+                </v-tooltip>
+                <v-spacer></v-spacer>
+                <div v-if="canEditPost">
                   <v-tooltip left>
                     <template v-slot:activator="{on}">
                       <v-btn v-on="on" @click="editPost(popup.activeFeature)" icon class="mr-3">

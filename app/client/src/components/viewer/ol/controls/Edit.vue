@@ -343,7 +343,7 @@ import VectorLayer from 'ol/layer/Vector';
 import Feature from 'ol/Feature';
 import RenderFeature from 'ol/render/Feature';
 import {LineString, MultiLineString, Polygon, MultiPolygon} from 'ol/geom';
-import {Modify, Draw} from 'ol/interaction';
+import {Modify, Draw, Translate} from 'ol/interaction';
 
 import {unByKey} from 'ol/Observable';
 import Overlay from 'ol/Overlay';
@@ -427,6 +427,7 @@ export default {
     },
 
     postMapMarkerLayer_: null,
+    postTranslateInteraction_: null,
     showDeleteDialog: false,
 
     showAllTranslations: false,
@@ -439,6 +440,7 @@ export default {
       selectedLayer: 'selectedLayer',
       postFeature: 'postFeature',
       postEditType: 'postEditType',
+      postEditLayer: 'postEditLayer',
       analysisEditType: 'analysisEditType',
       analysisIframeUrl: 'analysisIframeUrl',
       formValid: 'formValid',
@@ -1070,6 +1072,21 @@ export default {
         this.closeEdit();
       }
     },
+    enablePostTranslate() {
+      if (this.postTranslateInteraction_ || !this.postEditLayer) {
+        return;
+      }
+      this.postTranslateInteraction_ = new Translate({
+        layers: [this.postEditLayer],
+      });
+      this.map.addInteraction(this.postTranslateInteraction_);
+    },
+    disablePostTranslate() {
+      if (this.postTranslateInteraction_) {
+        this.map.removeInteraction(this.postTranslateInteraction_);
+        this.postTranslateInteraction_ = null;
+      }
+    },
     changeLayer() {
       this.layersDialog = true;
     },
@@ -1405,6 +1422,7 @@ export default {
   },
   beforeDestroy() {
     this.closeEdit();
+    this.disablePostTranslate();
   },
   watch: {
     $route(newValue, oldValue) {
@@ -1438,6 +1456,11 @@ export default {
       } else {
         this.map.removeLayer(this.postMapMarkerLayer_);
         this.postMapMarkerLayer_.setFlashlightVisible(false);
+      }
+      if (state === true && this.postEditType === 'update') {
+        this.enablePostTranslate();
+      } else {
+        this.disablePostTranslate();
       }
     },
     showAllTranslations(newValue) {

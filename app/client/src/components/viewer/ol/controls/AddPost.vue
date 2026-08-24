@@ -1,19 +1,24 @@
 <template>
-  <div v-if="postFeature === null && isEditingPost && editType !== 'update'">
-    <v-btn
-      v-if="currentResolution && currentResolution <= minResolution"
-      rounded
-      large
-      :color="color"
-      dark
-      @click="addPost"
-    >
-      {{ $t('tooltip.addPost').toUpperCase() }}
-    </v-btn>
-    <v-alert v-if="currentResolution && currentResolution > minResolution" dense border="left" type="warning">{{
-      $t('form.htmlPostEditor.addPostSnackbar')
+  <div>
+    <div v-if="postFeature === null && isEditingPost && editType !== 'update'">
+      <v-btn
+        v-if="currentResolution && currentResolution <= minResolution"
+        rounded
+        large
+        :color="color"
+        dark
+        @click="addPost"
+      >
+        {{ $t('tooltip.addPost').toUpperCase() }}
+      </v-btn>
+      <v-alert v-if="currentResolution && currentResolution > minResolution" dense border="left" type="warning">{{
+        $t('form.htmlPostEditor.addPostSnackbar')
+      }}</v-alert>
+      <confirm-unsave ref="confirm" :color="color"></confirm-unsave>
+    </div>
+    <v-alert v-if="isEditingPost && editType === 'update'" dense border="left" type="info" icon="open_with">{{
+      $t('form.htmlPostEditor.dragMarkerHint')
     }}</v-alert>
-    <confirm-unsave ref="confirm" :color="color"></confirm-unsave>
   </div>
 </template>
 
