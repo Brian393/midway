@@ -24,7 +24,19 @@
       </v-toolbar> -->
 
       <v-layout justify-space-between column fill-height>
-        <tip-tap-editor :map="map" v-if="postFeature || isEditingHtml" class="mx-1 mt-1"></tip-tap-editor>
+        <tip-tap-editor :map="map" v-if="postFeature || isEditingHtml" class="mx-1 mt-1">
+          <template v-if="isEditingPost && postFeature && postFeature.get('icon')" v-slot:below-toolbar>
+            <v-text-field
+              v-model="postTitle"
+              :placeholder="$t('form.htmlPostEditor.titleLabel')"
+              class="mx-1 post-title-field"
+              hide-details
+              solo
+              flat
+              dense
+            ></v-text-field>
+          </template>
+        </tip-tap-editor>
       </v-layout>
       <v-row>
         <v-spacer></v-spacer>
@@ -76,6 +88,7 @@ export default {
         insert: 'form.htmlPostEditor.insert',
       },
       overlayersGarbageCollector: [],
+      postTitle: '',
     };
   },
   created() {
@@ -100,6 +113,7 @@ export default {
       clonedFeature.setId(fId);
       this.postEditLayer.getSource().addFeature(clonedFeature);
       this.htmlContent = this.getHtml(feature.getProperties(), this.$appConfig.app.defaultLanguage, this.$i18n.locale);
+      this.postTitle = clonedFeature.get('title') || '';
       this.postFeature = clonedFeature;
       this.editType = 'update';
       this.isEditingPost = true;
@@ -134,12 +148,14 @@ export default {
       this.postEditLayer.getSource().clear();
       this.lastSelectedLayer = null;
       this.postFeature = null;
+      this.postTitle = '';
       this.isEditingPost = false;
       this.isEditingHtml = false;
     },
     closeInteraction() {
       this.postEditLayer.getSource().clear();
       this.postFeature = null;
+      this.postTitle = '';
       this.htmlContent = '';
 
       this.clearOverlays();
@@ -217,7 +233,7 @@ export default {
         payload.properties = {
           icon: this.postFeature.get('icon'),
           group: this.activeLayerGroup.navbarGroup,
-          title: this.postIconTitle,
+          title: this.postTitle && this.postTitle.trim() ? this.postTitle.trim() : this.postIconTitle,
           titleTranslations: this.postFeature.get('titleTranslations') || {},
           html: this.htmlContent,
           htmlTranslations: this.postFeature.get('htmlTranslations') || {},
@@ -363,4 +379,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.post-title-field ::v-deep input::placeholder {
+  font-style: italic;
+}
+</style>
