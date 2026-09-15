@@ -31,7 +31,7 @@
       </template>
 
       <!-- APP BAR DESKTOP -->
-      <v-app-bar app clipped-right height="60" :color="color.secondary" >
+      <v-app-bar app clipped-right height="60" :color="color.secondary">
         <a href="https://www.mdwfair.com/" target="_blank">
           <v-img
             class="pl-2 pr-4"
