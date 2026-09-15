@@ -95,20 +95,6 @@
       },
       {
         "type": "XYZ",
-        "name": "osm_midway_complete",
-        "group": "midway",
-        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm:osm_midway_complete@EPSG%3A900913@png/{z}/{x}/{-y}.png",
-        "minResolution": 3200,
-        "maxResolution": 60000,
-        "displayInLegend": false,
-        "legendDisplayName": "Midway States",
-        "displaySidebarInfo": false,
-        "visible": true,
-        "opacity": 0.99,
-        "updatewhileanimating": true
-      },
-      {
-        "type": "XYZ",
         "name": "drift",
         "group": "midway",
         "url": "https://midwayfair.s3.us-east-2.amazonaws.com/tiles/drift/{z}/{x}/{y}.png",
@@ -191,6 +177,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/9.png",
@@ -215,6 +202,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/5.png",
@@ -239,6 +227,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/3.png",
@@ -263,6 +252,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/8.png",
@@ -287,6 +277,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/6.png",
@@ -311,6 +302,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/3.png",
@@ -335,6 +327,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/4.png",
@@ -359,6 +352,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/4.png",
@@ -383,6 +377,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/5.png",
@@ -407,6 +402,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/8.png",
@@ -431,6 +427,7 @@
         "label": null,
         "hoverable": true,
         "isInteractive": true,
+        "searchableColumns": ["venue", "text", "translations"],
         "directions": true,
         "style": {
           "iconUrl": "https://midwayfair.s3.us-east-2.amazonaws.com/assets/icons/venues/6.png",
@@ -583,7 +580,7 @@
         "label": null,
         "hoverable": true,
         "canEdit": false,
-        "searchableColumns": ["title", "html"],
+        "searchableColumns": ["title", "html", "titleTranslations", "htmlTranslations"],
         "style": {
           "styleRef": "htmlLayerStyle",
           "hoverBackgroundColor": "hover"
