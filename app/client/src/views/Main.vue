@@ -239,7 +239,7 @@
                 @click="changeRegion(region)"
                 v-if="hasRegion(region)"
                 :dark="activeLayerGroup.region === region.name ? true : false"
-                :style="`background-color:${activeLayerGroup.region === region.name ? color.primary : 'white'};`"
+                :style="`background-color:${activeLayerGroup.region === region.name ? color.primary : 'black'};`"
                 :key="index"
               >
                 <v-list-item-title
