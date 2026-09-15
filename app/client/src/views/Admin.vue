@@ -119,7 +119,6 @@ export default {
       de: 'Deutsch',
       fr: 'Français',
       es: 'Español',
-      pt: 'Português',
       ru: 'Русский',
       ar: 'العربية',
       zh: '中文',

@@ -31,7 +31,7 @@
       </template>
 
       <!-- APP BAR DESKTOP -->
-      <v-app-bar app clipped-right height="60" :color="color.secondary" dark>
+      <v-app-bar app clipped-right height="60" :color="color.secondary" >
         <a href="https://www.mdwfair.com/" target="_blank">
           <v-img
             class="pl-2 pr-4"
@@ -44,7 +44,7 @@
         </a>
 
         <v-btn small depressed fab color="#E6C747" class="ml-0" @click="goToHome()"
-          ><v-icon small>fas fa-home</v-icon></v-btn
+          ><v-icon small color="white">fas fa-home</v-icon></v-btn
         >
 
         <v-spacer></v-spacer>
@@ -405,7 +405,6 @@ export default {
         de: 'Deutsch',
         fr: 'Français',
         es: 'Español',
-        pt: 'Português',
         ru: 'Русский',
         ar: 'العربية',
         zh: '中文',

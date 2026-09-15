@@ -74,6 +74,7 @@ exports.layer_post = async (req, res) => {
             if (["html_posts"].includes(payload.table)) {
               payload.properties.id = uuidv4();
               if (payload.language) {
+                await translateContent(payload.language, payload.properties.title, "title", payload.properties)
                 await translateContent(payload.language, payload.properties.html, "html", payload.properties)
               }
             }

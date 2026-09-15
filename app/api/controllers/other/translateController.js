@@ -12,7 +12,6 @@ const translator = new deepl.Translator(process.env.DEEPL_API_KEY, {
 const langVariants = {
   en: "en-US",
   es: "es",
-  pt: "pt-BR",
 };
 
 const nonTranslatableProperties = [
@@ -70,10 +69,19 @@ exports.translateAllFeatures = async (req, res) => {
   permissionController.hasPermission(req, res, "edit_layers", async () => {
     if (req.params.layer) {
       try {
+        // TEXT, not JSON: Postgres' json type has no upper()/LIKE operator, so GeoServer's
+        // CQL ILIKE search errors out on this column whenever it's listed in a layer's
+        // searchableColumns. The value is already just a JSON string on the wire either
+        // way (GeoServer serializes a json column as a string in WFS output, same as
+        // text), so this doesn't change what any client ever reads.
+        //
+        // NOTE: this only affects columns created from now on - any layer whose
+        // `translations` column already exists as json needs `ALTER TABLE ... ALTER
+        // COLUMN translations TYPE text` run against it directly for search to work.
         await addColumnIfNotExists(
           req.params.layer,
           'translations',
-          { type: Sequelize.JSON, allowNull: true }
+          { type: Sequelize.TEXT, allowNull: true }
         )
 
         const response = await sequelize.query(
