@@ -480,7 +480,11 @@ export default {
           const params = new URLSearchParams(layer.url.split('?')[1]);
           typeName = params.get('typename') || params.get('typeName');
         }
-        const cql = layer.searchableColumns.map(col => `(${col} ILIKE '%${term}%')`).join(' OR ');
+        // Column names are double-quoted: GeoServer's CQL lexer rejects bare identifiers
+        // containing non-ASCII characters (e.g. Spanish column names with accents like
+        // "cualidades_ecológicas") with a "Lexical error" - quoting is required for those
+        // and harmless for plain ASCII column names.
+        const cql = layer.searchableColumns.map(col => `("${col}" ILIKE '%${term}%')`).join(' OR ');
         // Without sortBy, GeoServer returns an arbitrary slice of matches before maxFeatures
         // cuts it off - sorting by the primary searchable column makes that slice consistent
         // across requests instead of changing with every unrelated query.
